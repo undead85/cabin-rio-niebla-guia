@@ -103,6 +103,7 @@ export const checkinContent: CheckinContent = {
   steps: [
     'Avísame cuando estés en camino para coordinar tu llegada.',
     'El acceso es por el sector Pino Huacho 2; el camino tiene huellas de cemento y sube cualquier vehículo.',
+    'Al llegar, se entregan las llaves y se revisa la cabaña. Te doy la bienvenida y te explico cómo funciona todo.',
   ],
   parkingNote: 'Estacionamiento gratuito en la propiedad.',
 };
@@ -265,7 +266,8 @@ export const appliancesContent: AppliancesContent = {
 
 export const marketsContent: PlaceListContent = {
   title: 'Supermercados',
-  intro: 'Para abastecerte en Valdivia. Toca para abrir en Google Maps.',
+  intro:
+    'Para abastecerte en Valdivia. Toca para abrir en Google Maps. Jumbo, Lider y Unimarc tienen delivery hasta la cancha.',
   icon: ShoppingCartSimple,
   items: [
     {
@@ -280,14 +282,19 @@ export const marketsContent: PlaceListContent = {
     },
     { name: 'Unimarc', note: 'Céntrico y práctico', q: 'Unimarc Valdivia' },
     {
-      name: 'Santa Isabel',
-      note: 'Compras rápidas',
-      q: 'Santa Isabel Valdivia',
+      name: 'Provisiones La Kathita',
+      note: 'Compras rápidas y pequeñas. 0.5km de la cabaña',
+      q: 'Provisiones La Kathita Valdivia',
     },
     {
-      name: 'Mercado Fluvial',
-      note: 'Pescados y mariscos frescos',
-      q: 'Mercado Fluvial Valdivia',
+      name: 'Minimercado Donde Tatuco',
+      note: 'Botillería y abarrotes. 3km de la cabaña',
+      q: 'Minimercado Donde Tatuco Valdivia',
+    },
+    {
+      name: 'Caleta Los Molinos',
+      note: 'Pescados y mariscos frescos. 6km de la cabaña',
+      q: 'Caleta Los Molinos Valdivia',
     },
   ],
 };
