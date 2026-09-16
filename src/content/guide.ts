@@ -47,7 +47,7 @@ export const categories: Category[] = [
   {
     key: 'location',
     icon: MapPinLine,
-    label: 'Cómo volver',
+    label: 'Cómo llegar',
     desc: 'Mapa y auto',
   },
   { key: 'appliances', icon: Plug, label: 'Artefactos', desc: 'Cómo usarlos' },
@@ -103,7 +103,6 @@ export const checkinContent: CheckinContent = {
   steps: [
     'Avísame cuando estés en camino para coordinar tu llegada.',
     'El acceso es por el sector Pino Huacho 2; el camino tiene huellas de cemento y sube cualquier vehículo.',
-    'Te enviaré el código de la cerradura el día de tu llegada. ¡Bienvenido!',
   ],
   parkingNote: 'Estacionamiento gratuito en la propiedad.',
 };
@@ -201,13 +200,13 @@ export const rulesContent: RulesContent = {
 };
 
 export const locationContent: LocationContent = {
-  title: 'Cómo volver',
+  title: 'Cómo llegar',
   addressLabel: 'DIRECCIÓN',
   address: 'Sector Pino Huacho 2',
   addressDetail: 'Valdivia, Los Ríos · Chile',
   directionsUrl:
     'https://www.google.com/maps/dir/?api=1&destination=-39.865443,-73.375001&travelmode=driving',
-  directionsCta: 'CÓMO VOLVER EN GOOGLE MAPS',
+  directionsCta: 'CÓMO LLEGAR EN GOOGLE MAPS',
   photoAlt: 'Indicaciones para transitar por el cerro',
   roadNote:
     'El camino de subida es parte del encanto: tranquilo y rodeado de naturaleza. Algunos tramos son angostos y pasa un auto a la vez, así que te recomendamos ir con calma. Por ley, quien sube tiene la preferencia, pero aquí nos cuidamos entre vecinos: si ves que alguien ya viene bajando a mitad de camino, regálale la pasada. Manejando despacio y con atención, llegarás sin problema.',
@@ -253,9 +252,10 @@ export const appliancesContent: AppliancesContent = {
       title: 'Televisor',
       subtitle: 'Smart TV con streaming',
       steps: [
-        'Enciende con el control; entrada HDMI por defecto.',
+        'Enciende con el control.',
         `Conéctate al Wi-Fi ${WIFI_NETWORK} si lo pide.`,
-        'Cierra tu sesión de las apps antes de irte.',
+        'Con el botón HOME accede a la app de tu preferencia. Esta disponible la app Zapping para ver los canales nacionales.',
+        'Cierra tu sesión de las apps (Youtube, Netflix, etc.) antes de irte.',
       ],
     },
   ],
@@ -294,9 +294,29 @@ export const marketsContent: PlaceListContent = {
 
 export const foodContent: PlaceListContent = {
   title: 'Dónde comer',
-  intro: 'Nuestros favoritos en Valdivia. Toca para ver en el mapa.',
+  intro: 'Nuestros favoritos. Toca para ver en el mapa.',
   icon: ForkKnife,
   items: [
+    {
+      name: 'Encuentro Costumbrista',
+      note: 'Cocina chilena y cerveza artesanal',
+      q: 'Encuentro Costumbrista Valdivia',
+    },
+    {
+      name: 'El Huairavo',
+      note: 'Restobar, abre en las tardes',
+      q: 'El Huairavo Valdivia',
+    },
+    {
+      name: 'La Motoneta',
+      note: 'Café restaurante, brunch y platos para compartir',
+      q: 'La Motoneta Valdivia',
+    },
+    {
+      name: 'Restaurant Entrecosta',
+      note: 'Pescados y mariscos.',
+      q: 'Restaurant Entrecosta Valdivia',
+    },
     {
       name: 'Cervecería Kunstmann',
       note: 'Cerveza artesanal y cocina alemana',
@@ -313,19 +333,14 @@ export const foodContent: PlaceListContent = {
       q: 'Entrelagos Valdivia',
     },
     {
-      name: 'La Última Frontera',
-      note: 'Bar bohemio y sándwiches',
-      q: 'La Ultima Frontera Valdivia',
+      name: 'Bar Bundor',
+      note: 'Cervecería artesanal, ceviche y fast food',
+      q: 'Bar Bundor Valdivia',
     },
     {
-      name: 'El Growler',
-      note: 'Cervecería artesanal y pizzas',
-      q: 'El Growler Valdivia',
-    },
-    {
-      name: 'Sello Propio',
-      note: 'Cocina de autor',
-      q: 'Sello Propio Cocina Valdivia',
+      name: 'Caleta Los Molinos',
+      note: 'Restaurante y muelle de pescadores',
+      q: 'Restaurante Caleta Los Molinos y muelle de pescadores Valdivia',
     },
   ],
 };
@@ -335,6 +350,26 @@ export const exploreContent: PlaceListContent = {
   intro: 'Lo mejor de Valdivia y sus alrededores.',
   icon: Compass,
   items: [
+    {
+      name: 'Castillos de Niebla y Corral',
+      note: 'Fuertes históricos',
+      q: 'Castillo de Niebla Valdivia',
+    },
+    {
+      name: 'Playa Isla del Rey',
+      note: 'En día soleado, un paseo imperdible',
+      q: 'Playa de Isla del Rey, carboneros.',
+    },
+    {
+      name: 'Parques Nacionales y Reserva Costera Valdiviana',
+      note: 'Naturaleza y aire libre. Se recomienda contactar guías locales.',
+      q: 'Playa Colun Valdivia',
+    },
+    {
+      name: 'Punta Curiñanco',
+      note: 'Area de playa y bosque nativo',
+      q: 'Punta Curiñanco Valdivia',
+    },
     {
       name: 'Mercado Fluvial',
       note: 'Lobos marinos junto al río',
@@ -354,11 +389,6 @@ export const exploreContent: PlaceListContent = {
       name: 'Parque Saval',
       note: 'Lagunas y senderos',
       q: 'Parque Saval Valdivia',
-    },
-    {
-      name: 'Castillos de Niebla y Corral',
-      note: 'Fuertes históricos y paseo en barco',
-      q: 'Castillo de Niebla Valdivia',
     },
     {
       name: 'Museo de Arte Contemporáneo',
