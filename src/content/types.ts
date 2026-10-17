@@ -1,17 +1,22 @@
 import type { Icon } from "@phosphor-icons/react";
 
-export type ScreenKey =
-  | "home"
-  | "wifi"
-  | "checkin"
-  | "rules"
-  | "location"
-  | "appliances"
-  | "markets"
-  | "food"
-  | "explore"
-  | "checkout"
-  | "contact";
+// Claves de pantalla: tambien son los fragmentos hash de la URL (`#wifi`) y las
+// llaves con las que `GuestGuide` resuelve que pantalla mostrar.
+export const SCREEN_KEYS = [
+  "home",
+  "wifi",
+  "checkin",
+  "rules",
+  "location",
+  "appliances",
+  "markets",
+  "food",
+  "explore",
+  "checkout",
+  "contact",
+] as const;
+
+export type ScreenKey = (typeof SCREEN_KEYS)[number];
 
 export interface Category {
   key: ScreenKey;
@@ -119,4 +124,28 @@ export interface ContactContent {
   role: string;
   message: string;
   cta: string;
+}
+
+// Textos de chrome (no de contenido) que viven fuera de una pantalla concreta.
+export interface UiContent {
+  backLabel: string;
+  languageLabel: string;
+}
+
+// Un idioma completo de la guia. `guides` en `guide.ts` indexa estos por locale.
+export interface GuideContent {
+  docTitle: string;
+  ui: UiContent;
+  categories: Category[];
+  home: HomeContent;
+  wifi: WifiContent;
+  checkin: CheckinContent;
+  rules: RulesContent;
+  location: LocationContent;
+  appliances: AppliancesContent;
+  markets: PlaceListContent;
+  food: PlaceListContent;
+  explore: PlaceListContent;
+  checkout: CheckoutContent;
+  contact: ContactContent;
 }

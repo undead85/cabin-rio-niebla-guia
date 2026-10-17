@@ -1,19 +1,20 @@
 import SubHeader from "@/components/ui/SubHeader";
-import { rulesContent } from "@/content/guide";
+import type { RulesContent } from "@/content/types";
 
 interface RulesScreenProps {
+  content: RulesContent;
   onBack: () => void;
 }
 
-export default function RulesScreen({ onBack }: RulesScreenProps) {
+export default function RulesScreen({ content, onBack }: RulesScreenProps) {
   return (
     <div>
-      <SubHeader title={rulesContent.title} onBack={onBack} />
+      <SubHeader title={content.title} onBack={onBack} />
       <div className="px-5 pt-6 pb-10">
         <div>
-          {rulesContent.sections.map((section) => (
+          {content.sections.map((section) => (
             <div key={section.title}>
-              <h3 className="mt-6 mb-2 text-[11px] font-semibold tracking-[0.3em] text-accent">
+              <h3 className="mt-6 mb-2 text-[11px] font-semibold tracking-[0.3em] text-accent zh:tracking-[0.16em]">
                 {section.title.toUpperCase()}
               </h3>
               <ul>
@@ -37,8 +38,8 @@ export default function RulesScreen({ onBack }: RulesScreenProps) {
             </div>
           ))}
         </div>
-        <p className="mx-1.5 mt-6 text-center font-serif text-[16px] leading-[1.5] font-medium italic text-subtle">
-          {rulesContent.farewell}
+        <p className="mx-1.5 mt-6 text-center font-serif text-[16px] leading-[1.5] font-medium italic text-subtle zh:not-italic">
+          {content.farewell}
         </p>
       </div>
     </div>

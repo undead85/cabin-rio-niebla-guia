@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Check, Copy, WifiHigh } from "@phosphor-icons/react";
 import SubHeader from "@/components/ui/SubHeader";
-import { wifiContent } from "@/content/guide";
 import { WIFI_NETWORK, WIFI_PASS } from "@/content/site";
+import type { WifiContent } from "@/content/types";
 
 interface WifiScreenProps {
+  content: WifiContent;
   onBack: () => void;
 }
 
-export default function WifiScreen({ onBack }: WifiScreenProps) {
+export default function WifiScreen({ content, onBack }: WifiScreenProps) {
   const [copied, setCopied] = useState(false);
   const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -32,19 +33,19 @@ export default function WifiScreen({ onBack }: WifiScreenProps) {
 
   return (
     <div>
-      <SubHeader title={wifiContent.title} onBack={onBack} />
+      <SubHeader title={content.title} onBack={onBack} />
       <div className="px-5 pt-6 pb-10">
         <div className="rounded-[20px] bg-primary px-[26px] py-[30px] text-center text-cream">
           <div className="mx-auto mb-[18px] grid h-[54px] w-[54px] place-items-center rounded-[16px] bg-accent-light/18 text-accent-light">
             <WifiHigh size={28} />
           </div>
-          <div className="mb-2 text-[10px] font-semibold tracking-[0.34em] text-accent">
-            {wifiContent.networkLabel}
+          <div className="mb-2 text-[10px] font-semibold tracking-[0.34em] text-accent zh:tracking-[0.18em]">
+            {content.networkLabel}
           </div>
           <div className="text-[24px] font-bold tracking-[0.01em]">{WIFI_NETWORK}</div>
           <div className="my-[22px] h-px bg-accent/25" />
-          <div className="mb-2 text-[10px] font-semibold tracking-[0.34em] text-accent">
-            {wifiContent.passLabel}
+          <div className="mb-2 text-[10px] font-semibold tracking-[0.34em] text-accent zh:tracking-[0.18em]">
+            {content.passLabel}
           </div>
           <div className="text-[24px] font-bold tracking-[0.04em]">{WIFI_PASS}</div>
         </div>
@@ -54,10 +55,10 @@ export default function WifiScreen({ onBack }: WifiScreenProps) {
           className="mt-[14px] flex w-full cursor-pointer appearance-none items-center justify-center gap-[9px] rounded-[14px] border-none bg-accent p-4 text-[13px] font-bold tracking-[0.08em] text-white"
         >
           {copied ? <Check size={18} /> : <Copy size={18} />}
-          <span aria-live="polite">{copied ? wifiContent.copiedCta : wifiContent.copyCta}</span>
+          <span aria-live="polite">{copied ? content.copiedCta : content.copyCta}</span>
         </button>
         <p className="mx-2 mt-5 text-center text-[13px] leading-[1.7] text-subtle">
-          {wifiContent.hint}
+          {content.hint}
         </p>
       </div>
     </div>

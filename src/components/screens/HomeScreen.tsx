@@ -1,20 +1,25 @@
 import Image from "next/image";
-import { categories, homeContent } from "@/content/guide";
+import LocaleToggle from "@/components/ui/LocaleToggle";
 import { CHECKIN_TIME, CHECKOUT_TIME, WIFI_NETWORK } from "@/content/site";
-import type { ScreenKey } from "@/content/types";
+import type { Category, HomeContent, ScreenKey } from "@/content/types";
 
 interface HomeScreenProps {
+  content: HomeContent;
+  categories: Category[];
   onNavigate: (next: ScreenKey) => void;
 }
 
-export default function HomeScreen({ onNavigate }: HomeScreenProps) {
+export default function HomeScreen({ content, categories, onNavigate }: HomeScreenProps) {
   return (
     <div>
       <div className="relative overflow-hidden bg-primary px-[26px] pt-[46px] pb-[34px] text-center">
         <div className="pointer-events-none absolute -bottom-[40%] -left-[20%] -right-[20%] h-[90%] hero-glow" />
+        <div className="absolute top-[16px] right-[16px] z-[1]">
+          <LocaleToggle />
+        </div>
         <div className="relative">
-          <div className="ml-[0.46em] text-[10px] font-semibold tracking-[0.46em] text-accent">
-            {homeContent.kicker}
+          <div className="ml-[0.46em] text-[10px] font-semibold tracking-[0.46em] text-accent zh:ml-0 zh:tracking-[0.18em]">
+            {content.kicker}
           </div>
           <svg
             viewBox="0 0 200 116"
@@ -26,13 +31,13 @@ export default function HomeScreen({ onNavigate }: HomeScreenProps) {
             <polygon points="12,114 68,44 124,114" className="fill-accent" />
           </svg>
           <h1 className="text-[27px] font-extrabold tracking-[0.045em] text-cream">
-            {homeContent.title}
+            {content.title}
           </h1>
-          <div className="mt-[10px] ml-[0.46em] text-[9px] font-semibold tracking-[0.46em] text-accent">
-            {homeContent.tagline}
+          <div className="mt-[10px] ml-[0.46em] text-[9px] font-semibold tracking-[0.46em] text-accent zh:ml-0 zh:tracking-[0.18em]">
+            {content.tagline}
           </div>
-          <p className="mx-auto mt-[22px] max-w-[300px] font-serif text-[19px] leading-[1.45] font-medium italic text-accent-light">
-            {homeContent.welcome}
+          <p className="mx-auto mt-[22px] max-w-[300px] font-serif text-[19px] leading-[1.45] font-medium italic text-accent-light zh:not-italic">
+            {content.welcome}
           </p>
         </div>
       </div>
@@ -40,19 +45,19 @@ export default function HomeScreen({ onNavigate }: HomeScreenProps) {
       <div className="flex gap-2 px-[18px] pt-[18px] pb-1">
         <div className="flex-1 rounded-[14px] border border-primary/7 bg-surface px-[10px] py-3 text-center">
           <div className="mb-[5px] text-[8px] font-semibold tracking-[0.18em] text-accent">
-            {homeContent.checkinLabel}
+            {content.checkinLabel}
           </div>
           <div className="text-[16px] font-bold text-primary">{CHECKIN_TIME}</div>
         </div>
         <div className="flex-1 rounded-[14px] border border-primary/7 bg-surface px-[10px] py-3 text-center">
           <div className="mb-[5px] text-[8px] font-semibold tracking-[0.18em] text-accent">
-            {homeContent.checkoutLabel}
+            {content.checkoutLabel}
           </div>
           <div className="text-[16px] font-bold text-primary">{CHECKOUT_TIME}</div>
         </div>
         <div className="flex-[1.3] rounded-[14px] border border-primary/7 bg-surface px-[10px] py-3 text-center">
           <div className="mb-[5px] text-[8px] font-semibold tracking-[0.18em] text-accent">
-            {homeContent.wifiLabel}
+            {content.wifiLabel}
           </div>
           <div className="text-[13px] font-bold text-primary">{WIFI_NETWORK}</div>
         </div>
@@ -62,7 +67,7 @@ export default function HomeScreen({ onNavigate }: HomeScreenProps) {
         <div className="relative h-[170px] w-full overflow-hidden rounded-[16px] bg-muted">
           <Image
             src="/images/cabana.avif"
-            alt={homeContent.photoAlt}
+            alt={content.photoAlt}
             priority
             fill
             sizes="(max-width: 440px) 100vw, 404px"
@@ -71,7 +76,7 @@ export default function HomeScreen({ onNavigate }: HomeScreenProps) {
         </div>
       </div>
 
-      <nav aria-label={homeContent.navLabel} className="px-[18px] pt-[14px] pb-[30px]">
+      <nav aria-label={content.navLabel} className="px-[18px] pt-[14px] pb-[30px]">
         <div className="grid grid-cols-2 gap-[11px]">
           {categories.map((c) => (
             <button
@@ -90,8 +95,8 @@ export default function HomeScreen({ onNavigate }: HomeScreenProps) {
         </div>
       </nav>
 
-      <div className="px-[18px] pb-10 text-center font-serif text-[16px] font-medium italic text-subtle">
-        {homeContent.farewell}
+      <div className="px-[18px] pb-10 text-center font-serif text-[16px] font-medium italic text-subtle zh:not-italic">
+        {content.farewell}
       </div>
     </div>
   );

@@ -1,8 +1,17 @@
 @import "tailwindcss";
 
+/* Ajustes que sólo aplican al chino: los glifos CJK no toleran la cursiva
+   sintética ni el tracking ancho pensado para versales latinas. El `:is()`
+   aporta la especificidad para ganarle a la utilidad base. */
+@custom-variant zh (&:is([data-locale='zh'] *));
+
+/* Montserrat y Cormorant no traen glifos CJK: el navegador cae glifo a glifo
+   en la fuente del sistema, así que la cadena nombra las habituales de
+   iOS/Android/Windows en vez de dejarlo al azar. Cargar una webfont china
+   costaría varios MB de datos móviles. */
 @theme inline {
-  --font-sans: var(--font-montserrat);
-  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-montserrat), system-ui, "PingFang SC", "HarmonyOS Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+  --font-serif: var(--font-cormorant), "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", serif;
 }
 
 @theme {
@@ -44,7 +53,7 @@
 body {
   background: var(--color-canvas);
   color: var(--color-primary);
-  font-family: var(--font-montserrat), system-ui, sans-serif;
+  font-family: var(--font-montserrat), system-ui, "PingFang SC", "HarmonyOS Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
 }
 
 ::selection {
