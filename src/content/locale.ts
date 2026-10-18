@@ -1,4 +1,4 @@
-export const LOCALES = ["es", "zh"] as const;
+export const LOCALES = ["es", "en", "zh"] as const;
 
 export type Locale = (typeof LOCALES)[number];
 
@@ -10,12 +10,14 @@ export const DEFAULT_LOCALE: Locale = "es";
 // quien todavía no entiende el idioma activo.
 export const LOCALE_LABELS: Record<Locale, string> = {
   es: "ES",
+  en: "EN",
   zh: "中文",
 };
 
 // Valor para el atributo `lang` del documento.
 export const LOCALE_TAGS: Record<Locale, string> = {
   es: "es",
+  en: "en",
   zh: "zh-CN",
 };
 

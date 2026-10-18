@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from "react";
 import {
   DEFAULT_LOCALE,
+  LOCALES,
   LOCALE_STORAGE_KEY,
   isLocale,
   type Locale,
@@ -27,9 +28,16 @@ function browserLocale(): Locale {
   // Defensivo a propósito: esto corre dentro del render, así que una excepción
   // aquí dejaría la guía en blanco.
   const tags = navigator.languages?.length ? navigator.languages : [navigator.language];
-  return tags.some((tag) => typeof tag === "string" && tag.toLowerCase().startsWith("zh"))
-    ? "zh"
-    : DEFAULT_LOCALE;
+  // `navigator.languages` viene ordenado por preferencia, así que gana la
+  // primera coincidencia: con ["en-US", "es"] el huésped abre en inglés.
+  // Las variantes se reducen a la base (`zh-TW` y `zh-CN` caen en `zh`).
+  for (const tag of tags) {
+    if (typeof tag !== "string") continue;
+    const base = tag.toLowerCase().split("-")[0];
+    const match = LOCALES.find((locale) => locale === base);
+    if (match) return match;
+  }
+  return DEFAULT_LOCALE;
 }
 
 function subscribe(callback: () => void) {
